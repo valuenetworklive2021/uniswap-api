@@ -54,7 +54,7 @@ type Pair {
     burns(first: Int = 100, orderBy: Burn_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: Burn_filter): [Burn!]
     createdAtBlockNumber: BigInt!
     createdAtTimestamp: BigInt!
-    factory: UniswapFactory!
+    factory: ValueswapFactory!
     id: ID!
     liquidityPositions(first: Int = 100, orderBy: LiquidityPosition_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: LiquidityPosition_filter): [LiquidityPosition!]
     mints(first: Int = 100, orderBy: Mint_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: Mint_filter): [Mint!]
@@ -231,34 +231,34 @@ type Query {
         skip: Int = 0,
         where: Transaction_filter
     ): [Transaction!]!
-    uniswapDayData(
+    valueswapDayData(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): UniswapDayData
-    uniswapDayDatas(
+    ): ValueswapDayData
+    valueswapDayDatas(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: UniswapDayData_orderBy,
+        orderBy: ValueswapDayData_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: UniswapDayData_filter
-    ): [UniswapDayData!]!
-    uniswapFactories(
+        where: ValueswapDayData_filter
+    ): [ValueswapDayData!]!
+    valueswapFactories(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: UniswapFactory_orderBy,
+        orderBy: ValueswapFactory_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: UniswapFactory_filter
-    ): [UniswapFactory!]!
-    uniswapFactory(
+        where: ValueswapFactory_filter
+    ): [ValueswapFactory!]!
+    valueswapFactory(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): UniswapFactory
+    ): ValueswapFactory
     user(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
@@ -416,34 +416,34 @@ type Subscription {
         skip: Int = 0,
         where: Transaction_filter
     ): [Transaction!]!
-    uniswapDayData(
+    valueswapDayData(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): UniswapDayData
-    uniswapDayDatas(
+    ): ValueswapDayData
+    valueswapDayDatas(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: UniswapDayData_orderBy,
+        orderBy: ValueswapDayData_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: UniswapDayData_filter
-    ): [UniswapDayData!]!
-    uniswapFactories(
+        where: ValueswapDayData_filter
+    ): [ValueswapDayData!]!
+    valueswapFactories(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: UniswapFactory_orderBy,
+        orderBy: ValueswapFactory_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: UniswapFactory_filter
-    ): [UniswapFactory!]!
-    uniswapFactory(
+        where: ValueswapFactory_filter
+    ): [ValueswapFactory!]!
+    valueswapFactory(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): UniswapFactory
+    ): ValueswapFactory
     user(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
@@ -514,7 +514,7 @@ type Transaction {
     timestamp: BigInt!
 }
 
-type UniswapDayData {
+type ValueswapDayData {
     dailyVolumeETH: BigDecimal!
     dailyVolumeUSD: BigDecimal!
     date: Int!
@@ -528,7 +528,7 @@ type UniswapDayData {
     txCount: BigInt!
 }
 
-type UniswapFactory {
+type ValueswapFactory {
     id: ID!
     mostLiquidTokens(first: Int = 100, orderBy: TokenDayData_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: TokenDayData_filter): [TokenDayData!]!
     pairCount: Int!
@@ -689,7 +689,7 @@ enum Transaction_orderBy {
     timestamp
 }
 
-enum UniswapDayData_orderBy {
+enum ValueswapDayData_orderBy {
     dailyVolumeETH
     dailyVolumeUSD
     date
@@ -703,7 +703,7 @@ enum UniswapDayData_orderBy {
     txCount
 }
 
-enum UniswapFactory_orderBy {
+enum ValueswapFactory_orderBy {
     id
     mostLiquidTokens
     pairCount
@@ -1593,7 +1593,7 @@ input Transaction_filter {
     timestamp_not_in: [BigInt!]
 }
 
-input UniswapDayData_filter {
+input ValueswapDayData_filter {
     dailyVolumeETH: BigDecimal
     dailyVolumeETH_gt: BigDecimal
     dailyVolumeETH_gte: BigDecimal
@@ -1680,7 +1680,7 @@ input UniswapDayData_filter {
     txCount_not_in: [BigInt!]
 }
 
-input UniswapFactory_filter {
+input ValueswapFactory_filter {
     id: ID
     id_gt: ID
     id_gte: ID

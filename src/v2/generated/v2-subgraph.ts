@@ -66,7 +66,7 @@ export interface Pair {
   readonly burns?: Maybe<ReadonlyArray<Burn>>;
   readonly createdAtBlockNumber: Scalars['BigInt'];
   readonly createdAtTimestamp: Scalars['BigInt'];
-  readonly factory: UniswapFactory;
+  readonly factory: ValueswapFactory;
   readonly id: Scalars['ID'];
   readonly liquidityPositions?: Maybe<ReadonlyArray<LiquidityPosition>>;
   readonly mints?: Maybe<ReadonlyArray<Mint>>;
@@ -161,10 +161,10 @@ export interface Query {
   readonly tokens: ReadonlyArray<Token>;
   readonly transaction?: Maybe<Transaction>;
   readonly transactions: ReadonlyArray<Transaction>;
-  readonly uniswapDayData?: Maybe<UniswapDayData>;
-  readonly uniswapDayDatas: ReadonlyArray<UniswapDayData>;
-  readonly uniswapFactories: ReadonlyArray<UniswapFactory>;
-  readonly uniswapFactory?: Maybe<UniswapFactory>;
+  readonly valueswapDayData?: Maybe<ValueswapDayData>;
+  readonly valueswapDayDatas: ReadonlyArray<ValueswapDayData>;
+  readonly valueswapFactories: ReadonlyArray<ValueswapFactory>;
+  readonly valueswapFactory?: Maybe<ValueswapFactory>;
   readonly user?: Maybe<User>;
   readonly users: ReadonlyArray<User>;
 }
@@ -330,33 +330,33 @@ export interface QueryTransactionsArgs {
 }
 
 
-export interface QueryUniswapDayDataArgs {
+export interface QueryValueswapDayDataArgs {
   block?: Maybe<Block_Height>;
   id: Scalars['ID'];
 }
 
 
-export interface QueryUniswapDayDatasArgs {
+export interface QueryValueswapDayDatasArgs {
   block?: Maybe<Block_Height>;
   first?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<UniswapDayData_OrderBy>;
+  orderBy?: Maybe<ValueswapDayData_OrderBy>;
   orderDirection?: Maybe<OrderDirection>;
   skip?: Maybe<Scalars['Int']>;
-  where?: Maybe<UniswapDayData_Filter>;
+  where?: Maybe<ValueswapDayData_Filter>;
 }
 
 
-export interface QueryUniswapFactoriesArgs {
+export interface QueryValueswapFactoriesArgs {
   block?: Maybe<Block_Height>;
   first?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<UniswapFactory_OrderBy>;
+  orderBy?: Maybe<ValueswapFactory_OrderBy>;
   orderDirection?: Maybe<OrderDirection>;
   skip?: Maybe<Scalars['Int']>;
-  where?: Maybe<UniswapFactory_Filter>;
+  where?: Maybe<ValueswapFactory_Filter>;
 }
 
 
-export interface QueryUniswapFactoryArgs {
+export interface QueryValueswapFactoryArgs {
   block?: Maybe<Block_Height>;
   id: Scalars['ID'];
 }
@@ -399,10 +399,10 @@ export interface Subscription {
   readonly tokens: ReadonlyArray<Token>;
   readonly transaction?: Maybe<Transaction>;
   readonly transactions: ReadonlyArray<Transaction>;
-  readonly uniswapDayData?: Maybe<UniswapDayData>;
-  readonly uniswapDayDatas: ReadonlyArray<UniswapDayData>;
-  readonly uniswapFactories: ReadonlyArray<UniswapFactory>;
-  readonly uniswapFactory?: Maybe<UniswapFactory>;
+  readonly valueswapDayData?: Maybe<ValueswapDayData>;
+  readonly valueswapDayDatas: ReadonlyArray<ValueswapDayData>;
+  readonly valueswapFactories: ReadonlyArray<ValueswapFactory>;
+  readonly valueswapFactory?: Maybe<ValueswapFactory>;
   readonly user?: Maybe<User>;
   readonly users: ReadonlyArray<User>;
 }
@@ -568,33 +568,33 @@ export interface SubscriptionTransactionsArgs {
 }
 
 
-export interface SubscriptionUniswapDayDataArgs {
+export interface SubscriptionValueswapDayDataArgs {
   block?: Maybe<Block_Height>;
   id: Scalars['ID'];
 }
 
 
-export interface SubscriptionUniswapDayDatasArgs {
+export interface SubscriptionValueswapDayDatasArgs {
   block?: Maybe<Block_Height>;
   first?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<UniswapDayData_OrderBy>;
+  orderBy?: Maybe<ValueswapDayData_OrderBy>;
   orderDirection?: Maybe<OrderDirection>;
   skip?: Maybe<Scalars['Int']>;
-  where?: Maybe<UniswapDayData_Filter>;
+  where?: Maybe<ValueswapDayData_Filter>;
 }
 
 
-export interface SubscriptionUniswapFactoriesArgs {
+export interface SubscriptionValueswapFactoriesArgs {
   block?: Maybe<Block_Height>;
   first?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<UniswapFactory_OrderBy>;
+  orderBy?: Maybe<ValueswapFactory_OrderBy>;
   orderDirection?: Maybe<OrderDirection>;
   skip?: Maybe<Scalars['Int']>;
-  where?: Maybe<UniswapFactory_Filter>;
+  where?: Maybe<ValueswapFactory_Filter>;
 }
 
 
-export interface SubscriptionUniswapFactoryArgs {
+export interface SubscriptionValueswapFactoryArgs {
   block?: Maybe<Block_Height>;
   id: Scalars['ID'];
 }
@@ -727,8 +727,8 @@ export interface TransactionSwapsArgs {
   where?: Maybe<Swap_Filter>;
 }
 
-export interface UniswapDayData {
-  readonly __typename?: 'UniswapDayData';
+export interface ValueswapDayData {
+  readonly __typename?: 'ValueswapDayData';
   readonly dailyVolumeETH: Scalars['BigDecimal'];
   readonly dailyVolumeUSD: Scalars['BigDecimal'];
   readonly date: Scalars['Int'];
@@ -743,7 +743,7 @@ export interface UniswapDayData {
 }
 
 
-export interface UniswapDayDataMostLiquidTokensArgs {
+export interface ValueswapDayDataMostLiquidTokensArgs {
   first?: Maybe<Scalars['Int']>;
   orderBy?: Maybe<TokenDayData_OrderBy>;
   orderDirection?: Maybe<OrderDirection>;
@@ -751,8 +751,8 @@ export interface UniswapDayDataMostLiquidTokensArgs {
   where?: Maybe<TokenDayData_Filter>;
 }
 
-export interface UniswapFactory {
-  readonly __typename?: 'UniswapFactory';
+export interface ValueswapFactory {
+  readonly __typename?: 'ValueswapFactory';
   readonly id: Scalars['ID'];
   readonly mostLiquidTokens: ReadonlyArray<TokenDayData>;
   readonly pairCount: Scalars['Int'];
@@ -765,7 +765,7 @@ export interface UniswapFactory {
 }
 
 
-export interface UniswapFactoryMostLiquidTokensArgs {
+export interface ValueswapFactoryMostLiquidTokensArgs {
   first?: Maybe<Scalars['Int']>;
   orderBy?: Maybe<TokenDayData_OrderBy>;
   orderDirection?: Maybe<OrderDirection>;
@@ -774,7 +774,7 @@ export interface UniswapFactoryMostLiquidTokensArgs {
 }
 
 
-export interface UniswapFactoryPairsArgs {
+export interface ValueswapFactoryPairsArgs {
   first?: Maybe<Scalars['Int']>;
   orderBy?: Maybe<Pair_OrderBy>;
   orderDirection?: Maybe<OrderDirection>;
@@ -941,7 +941,7 @@ export enum Transaction_OrderBy {
   Timestamp = 'timestamp'
 }
 
-export enum UniswapDayData_OrderBy {
+export enum ValueswapDayData_OrderBy {
   DailyVolumeEth = 'dailyVolumeETH',
   DailyVolumeUsd = 'dailyVolumeUSD',
   Date = 'date',
@@ -955,7 +955,7 @@ export enum UniswapDayData_OrderBy {
   TxCount = 'txCount'
 }
 
-export enum UniswapFactory_OrderBy {
+export enum ValueswapFactory_OrderBy {
   Id = 'id',
   MostLiquidTokens = 'mostLiquidTokens',
   PairCount = 'pairCount',
@@ -1845,7 +1845,7 @@ export interface Transaction_Filter {
   readonly timestamp_not_in?: Maybe<ReadonlyArray<Scalars['BigInt']>>;
 }
 
-export interface UniswapDayData_Filter {
+export interface ValueswapDayData_Filter {
   readonly dailyVolumeETH?: Maybe<Scalars['BigDecimal']>;
   readonly dailyVolumeETH_gt?: Maybe<Scalars['BigDecimal']>;
   readonly dailyVolumeETH_gte?: Maybe<Scalars['BigDecimal']>;
@@ -1932,7 +1932,7 @@ export interface UniswapDayData_Filter {
   readonly txCount_not_in?: Maybe<ReadonlyArray<Scalars['BigInt']>>;
 }
 
-export interface UniswapFactory_Filter {
+export interface ValueswapFactory_Filter {
   readonly id?: Maybe<Scalars['ID']>;
   readonly id_gt?: Maybe<Scalars['ID']>;
   readonly id_gte?: Maybe<Scalars['ID']>;

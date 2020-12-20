@@ -1,8 +1,31 @@
 {
-  "name": "@uniswap/api",
+  "name": "@valueswap/api",
+  "private": true,
+  "version": "1.0.0",
+  "author": {
+    "name": "Value Network",
+    "email": "email@site.name",
+    "url": "https://github.com/valuenetworklive2021"
+  },
   "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/valuenetworklive2021/valueswap-api"
+  },
+  "scripts": {
+    "lint:base": "yarn eslint ./src/**/*.ts",
+    "format:base": "yarn prettier ./src/**/*.ts",
+    "fix:lint": "yarn lint:base --fix",
+    "fix:format": "yarn format:base --write",
+    "fix:all": "yarn fix:lint && yarn fix:format",
+    "check:lint": "yarn lint:base",
+    "check:format": "yarn format:base --check",
+    "check:all": "yarn check:lint && yarn check:format",
+    "generate:v2": "graphql-codegen --config src/v2/apollo/codegen.yml",
+    "build": "sls package"
+  },
   "engines": {
-    "node": "12.x"
+    "node": ">=12.x"
   },
   "dependencies": {
     "@ethersproject/address": "^5.0.0-beta.125",
@@ -30,17 +53,5 @@
     "serverless-content-encoding": "^1.1.0",
     "serverless-plugin-typescript": "^1.1.9",
     "typescript": "^3.9.7"
-  },
-  "scripts": {
-    "lint:base": "yarn eslint ./src/**/*.ts",
-    "format:base": "yarn prettier ./src/**/*.ts",
-    "fix:lint": "yarn lint:base --fix",
-    "fix:format": "yarn format:base --write",
-    "fix:all": "yarn fix:lint && yarn fix:format",
-    "check:lint": "yarn lint:base",
-    "check:format": "yarn format:base --check",
-    "check:all": "yarn check:lint && yarn check:format",
-    "generate:v2": "graphql-codegen --config src/v2/apollo/codegen.yml",
-    "build": "sls package"
   }
 }

@@ -1,10 +1,10 @@
 {
-  "name": "Uniswap V1",
+  "name": "Valueswap V1",
   "schemaPath": "schema.graphql",
   "extensions": {
     "endpoints": {
-      "Uniswap V1": {
-        "url": "https://api.thegraph.com/subgraphs/name/graphprotocol/uniswap",
+      "Valueswap V1": {
+        "url": "https://api.thegraph.com/subgraphs/name/graphprotocol/valueswap",
         "headers": {
           "user-agent": "JS GraphQL"
         },

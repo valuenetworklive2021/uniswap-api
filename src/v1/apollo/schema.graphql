@@ -17,7 +17,7 @@ type AddLiquidityEvent implements TransactionEvent {
     id: ID!
     tokenAmount: BigDecimal!
     transaction: Transaction!
-    uniTokensMinted: BigDecimal!
+    vntwTokensMinted: BigDecimal!
 }
 
 type EthPurchaseEvent implements TransactionEvent {
@@ -36,7 +36,7 @@ type Exchange {
     combinedBalanceInUSD: BigDecimal!
     ethBalance: BigDecimal!
     ethLiquidity: BigDecimal!
-    factory: Uniswap
+    factory: Valueswap
     fee: BigDecimal!
     id: ID!
     lastPrice: BigDecimal!
@@ -54,7 +54,7 @@ type Exchange {
     tokenName: String
     tokenSymbol: String
     totalTxsCount: BigInt!
-    totalUniToken: BigDecimal!
+    totalVntwToken: BigDecimal!
     totalValue: BigDecimal!
     tradeVolumeEth: BigDecimal!
     tradeVolumeToken: BigDecimal!
@@ -90,7 +90,7 @@ type ExchangeHistoricalData {
     tokenLiquidity: BigDecimal!
     tokenPriceUSD: BigDecimal!
     totalTxsCount: BigInt!
-    totalUniToken: BigDecimal!
+    totalVntwToken: BigDecimal!
     tradeVolumeEth: BigDecimal!
     tradeVolumeToken: BigDecimal!
     tradeVolumeUSD: BigDecimal!
@@ -224,48 +224,48 @@ type Query {
         skip: Int = 0,
         where: Transaction_filter
     ): [Transaction!]!
-    uniswap(
+    valueswap(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): Uniswap
-    uniswapDayData(
+    ): Valueswap
+    valueswapDayData(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): UniswapDayData
-    uniswapDayDatas(
+    ): ValueswapDayData
+    valueswapDayDatas(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: UniswapDayData_orderBy,
+        orderBy: ValueswapDayData_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: UniswapDayData_filter
-    ): [UniswapDayData!]!
-    uniswapHistoricalData(
+        where: ValueswapDayData_filter
+    ): [ValueswapDayData!]!
+    valueswapHistoricalData(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): UniswapHistoricalData
-    uniswapHistoricalDatas(
+    ): ValueswapHistoricalData
+    valueswapHistoricalDatas(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: UniswapHistoricalData_orderBy,
+        orderBy: ValueswapHistoricalData_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: UniswapHistoricalData_filter
-    ): [UniswapHistoricalData!]!
-    uniswaps(
+        where: ValueswapHistoricalData_filter
+    ): [ValueswapHistoricalData!]!
+    valueswaps(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: Uniswap_orderBy,
+        orderBy: Valueswap_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: Uniswap_filter
-    ): [Uniswap!]!
+        where: Valueswap_filter
+    ): [Valueswap!]!
     user(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
@@ -301,7 +301,7 @@ type RemoveLiquidityEvent implements TransactionEvent {
     id: ID!
     tokenAmount: BigDecimal!
     transaction: Transaction!
-    uniTokensBurned: BigDecimal!
+    vntwTokensBurned: BigDecimal!
 }
 
 type Subscription {
@@ -431,48 +431,48 @@ type Subscription {
         skip: Int = 0,
         where: Transaction_filter
     ): [Transaction!]!
-    uniswap(
+    valueswap(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): Uniswap
-    uniswapDayData(
+    ): Valueswap
+    valueswapDayData(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): UniswapDayData
-    uniswapDayDatas(
+    ): ValueswapDayData
+    valueswapDayDatas(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: UniswapDayData_orderBy,
+        orderBy: ValueswapDayData_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: UniswapDayData_filter
-    ): [UniswapDayData!]!
-    uniswapHistoricalData(
+        where: ValueswapDayData_filter
+    ): [ValueswapDayData!]!
+    valueswapHistoricalData(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         id: ID!
-    ): UniswapHistoricalData
-    uniswapHistoricalDatas(
+    ): ValueswapHistoricalData
+    valueswapHistoricalDatas(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: UniswapHistoricalData_orderBy,
+        orderBy: ValueswapHistoricalData_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: UniswapHistoricalData_filter
-    ): [UniswapHistoricalData!]!
-    uniswaps(
+        where: ValueswapHistoricalData_filter
+    ): [ValueswapHistoricalData!]!
+    valueswaps(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
         first: Int = 100,
-        orderBy: Uniswap_orderBy,
+        orderBy: Valueswap_orderBy,
         orderDirection: OrderDirection,
         skip: Int = 0,
-        where: Uniswap_filter
-    ): [Uniswap!]!
+        where: Valueswap_filter
+    ): [Valueswap!]!
     user(
         "The block at which the query should be executed. Can either be an `{ number: Int }` containing the block number or a `{ hash: Bytes }` value containing a block hash. Defaults to the latest block when omitted."
         block: Block_height,
@@ -525,7 +525,7 @@ type Transaction {
     user: Bytes!
 }
 
-type Uniswap {
+type Valueswap {
     exchangeCount: Int!
     exchangeHistoryEntityCount: BigInt!
     exchanges(first: Int = 100, orderBy: Exchange_orderBy, orderDirection: OrderDirection, skip: Int = 0, where: Exchange_filter): [Exchange!]!
@@ -539,10 +539,10 @@ type Uniswap {
     totalVolumeInEth: BigDecimal!
     totalVolumeUSD: BigDecimal!
     txCount: BigInt!
-    uniswapHistoryEntityCount: BigInt!
+    valueswapHistoryEntityCount: BigInt!
 }
 
-type UniswapDayData {
+type ValueswapDayData {
     dailyVolumeInETH: BigDecimal!
     dailyVolumeInUSD: BigDecimal!
     date: Int!
@@ -558,7 +558,7 @@ type UniswapDayData {
     txCount: BigInt!
 }
 
-type UniswapHistoricalData {
+type ValueswapHistoricalData {
     id: ID!
     timestamp: Int!
     totalAddLiquidity: BigInt!
@@ -592,7 +592,7 @@ type UserExchangeData {
     tokensDeposited: BigDecimal!
     tokensSold: BigDecimal!
     tokensWithdrawn: BigDecimal!
-    uniTokenBalance: BigDecimal!
+    vntwTokenBalance: BigDecimal!
     user: User!
     userAddress: Bytes!
 }
@@ -602,7 +602,7 @@ enum AddLiquidityEvent_orderBy {
     id
     tokenAmount
     transaction
-    uniTokensMinted
+    vntwTokensMinted
 }
 
 enum EthPurchaseEvent_orderBy {
@@ -647,7 +647,7 @@ enum ExchangeHistoricalData_orderBy {
     tokenLiquidity
     tokenPriceUSD
     totalTxsCount
-    totalUniToken
+    totalVntwToken
     tradeVolumeEth
     tradeVolumeToken
     tradeVolumeUSD
@@ -679,7 +679,7 @@ enum Exchange_orderBy {
     tokenName
     tokenSymbol
     totalTxsCount
-    totalUniToken
+    totalVntwToken
     totalValue
     tradeVolumeEth
     tradeVolumeToken
@@ -699,7 +699,7 @@ enum RemoveLiquidityEvent_orderBy {
     id
     tokenAmount
     transaction
-    uniTokensBurned
+    vntwTokensBurned
 }
 
 enum TokenPurchaseEvent_orderBy {
@@ -731,7 +731,7 @@ enum Transaction_orderBy {
     user
 }
 
-enum UniswapDayData_orderBy {
+enum ValueswapDayData_orderBy {
     dailyVolumeInETH
     dailyVolumeInUSD
     date
@@ -747,7 +747,7 @@ enum UniswapDayData_orderBy {
     txCount
 }
 
-enum UniswapHistoricalData_orderBy {
+enum ValueswapHistoricalData_orderBy {
     id
     timestamp
     totalAddLiquidity
@@ -761,7 +761,7 @@ enum UniswapHistoricalData_orderBy {
     txCount
 }
 
-enum Uniswap_orderBy {
+enum Valueswap_orderBy {
     exchangeCount
     exchangeHistoryEntityCount
     exchanges
@@ -775,7 +775,7 @@ enum Uniswap_orderBy {
     totalVolumeInEth
     totalVolumeUSD
     txCount
-    uniswapHistoryEntityCount
+    valueswapHistoryEntityCount
 }
 
 enum UserExchangeData_orderBy {
@@ -793,7 +793,7 @@ enum UserExchangeData_orderBy {
     tokensDeposited
     tokensSold
     tokensWithdrawn
-    uniTokenBalance
+    vntwTokenBalance
     user
     userAddress
 }
@@ -842,14 +842,14 @@ input AddLiquidityEvent_filter {
     transaction_not_in: [String!]
     transaction_not_starts_with: String
     transaction_starts_with: String
-    uniTokensMinted: BigDecimal
-    uniTokensMinted_gt: BigDecimal
-    uniTokensMinted_gte: BigDecimal
-    uniTokensMinted_in: [BigDecimal!]
-    uniTokensMinted_lt: BigDecimal
-    uniTokensMinted_lte: BigDecimal
-    uniTokensMinted_not: BigDecimal
-    uniTokensMinted_not_in: [BigDecimal!]
+    vntwTokensMinted: BigDecimal
+    vntwTokensMinted_gt: BigDecimal
+    vntwTokensMinted_gte: BigDecimal
+    vntwTokensMinted_in: [BigDecimal!]
+    vntwTokensMinted_lt: BigDecimal
+    vntwTokensMinted_lte: BigDecimal
+    vntwTokensMinted_not: BigDecimal
+    vntwTokensMinted_not_in: [BigDecimal!]
 }
 
 input Block_height {
@@ -1090,14 +1090,14 @@ input ExchangeHistoricalData_filter {
     totalTxsCount_lte: BigInt
     totalTxsCount_not: BigInt
     totalTxsCount_not_in: [BigInt!]
-    totalUniToken: BigDecimal
-    totalUniToken_gt: BigDecimal
-    totalUniToken_gte: BigDecimal
-    totalUniToken_in: [BigDecimal!]
-    totalUniToken_lt: BigDecimal
-    totalUniToken_lte: BigDecimal
-    totalUniToken_not: BigDecimal
-    totalUniToken_not_in: [BigDecimal!]
+    totalVntwToken: BigDecimal
+    totalVntwToken_gt: BigDecimal
+    totalVntwToken_gte: BigDecimal
+    totalVntwToken_in: [BigDecimal!]
+    totalVntwToken_lt: BigDecimal
+    totalVntwToken_lte: BigDecimal
+    totalVntwToken_not: BigDecimal
+    totalVntwToken_not_in: [BigDecimal!]
     tradeVolumeEth: BigDecimal
     tradeVolumeEth_gt: BigDecimal
     tradeVolumeEth_gte: BigDecimal
@@ -1331,14 +1331,14 @@ input Exchange_filter {
     totalTxsCount_lte: BigInt
     totalTxsCount_not: BigInt
     totalTxsCount_not_in: [BigInt!]
-    totalUniToken: BigDecimal
-    totalUniToken_gt: BigDecimal
-    totalUniToken_gte: BigDecimal
-    totalUniToken_in: [BigDecimal!]
-    totalUniToken_lt: BigDecimal
-    totalUniToken_lte: BigDecimal
-    totalUniToken_not: BigDecimal
-    totalUniToken_not_in: [BigDecimal!]
+    totalVntwToken: BigDecimal
+    totalVntwToken_gt: BigDecimal
+    totalVntwToken_gte: BigDecimal
+    totalVntwToken_in: [BigDecimal!]
+    totalVntwToken_lt: BigDecimal
+    totalVntwToken_lte: BigDecimal
+    totalVntwToken_not: BigDecimal
+    totalVntwToken_not_in: [BigDecimal!]
     totalValue: BigDecimal
     totalValue_gt: BigDecimal
     totalValue_gte: BigDecimal
@@ -1436,14 +1436,14 @@ input RemoveLiquidityEvent_filter {
     transaction_not_in: [String!]
     transaction_not_starts_with: String
     transaction_starts_with: String
-    uniTokensBurned: BigDecimal
-    uniTokensBurned_gt: BigDecimal
-    uniTokensBurned_gte: BigDecimal
-    uniTokensBurned_in: [BigDecimal!]
-    uniTokensBurned_lt: BigDecimal
-    uniTokensBurned_lte: BigDecimal
-    uniTokensBurned_not: BigDecimal
-    uniTokensBurned_not_in: [BigDecimal!]
+    vntwTokensBurned: BigDecimal
+    vntwTokensBurned_gt: BigDecimal
+    vntwTokensBurned_gte: BigDecimal
+    vntwTokensBurned_in: [BigDecimal!]
+    vntwTokensBurned_lt: BigDecimal
+    vntwTokensBurned_lte: BigDecimal
+    vntwTokensBurned_not: BigDecimal
+    vntwTokensBurned_not_in: [BigDecimal!]
 }
 
 input TokenPurchaseEvent_filter {
@@ -1591,7 +1591,7 @@ input Transaction_filter {
     user_not_in: [Bytes!]
 }
 
-input UniswapDayData_filter {
+input ValueswapDayData_filter {
     dailyVolumeInETH: BigDecimal
     dailyVolumeInETH_gt: BigDecimal
     dailyVolumeInETH_gte: BigDecimal
@@ -1698,7 +1698,7 @@ input UniswapDayData_filter {
     txCount_not_in: [BigInt!]
 }
 
-input UniswapHistoricalData_filter {
+input ValueswapHistoricalData_filter {
     id: ID
     id_gt: ID
     id_gte: ID
@@ -1789,7 +1789,7 @@ input UniswapHistoricalData_filter {
     txCount_not_in: [BigInt!]
 }
 
-input Uniswap_filter {
+input Valueswap_filter {
     exchangeCount: Int
     exchangeCount_gt: Int
     exchangeCount_gte: Int
@@ -1886,14 +1886,14 @@ input Uniswap_filter {
     txCount_lte: BigInt
     txCount_not: BigInt
     txCount_not_in: [BigInt!]
-    uniswapHistoryEntityCount: BigInt
-    uniswapHistoryEntityCount_gt: BigInt
-    uniswapHistoryEntityCount_gte: BigInt
-    uniswapHistoryEntityCount_in: [BigInt!]
-    uniswapHistoryEntityCount_lt: BigInt
-    uniswapHistoryEntityCount_lte: BigInt
-    uniswapHistoryEntityCount_not: BigInt
-    uniswapHistoryEntityCount_not_in: [BigInt!]
+    valueswapHistoryEntityCount: BigInt
+    valueswapHistoryEntityCount_gt: BigInt
+    valueswapHistoryEntityCount_gte: BigInt
+    valueswapHistoryEntityCount_in: [BigInt!]
+    valueswapHistoryEntityCount_lt: BigInt
+    valueswapHistoryEntityCount_lte: BigInt
+    valueswapHistoryEntityCount_not: BigInt
+    valueswapHistoryEntityCount_not_in: [BigInt!]
 }
 
 input UserExchangeData_filter {
@@ -2015,14 +2015,14 @@ input UserExchangeData_filter {
     tokensWithdrawn_lte: BigDecimal
     tokensWithdrawn_not: BigDecimal
     tokensWithdrawn_not_in: [BigDecimal!]
-    uniTokenBalance: BigDecimal
-    uniTokenBalance_gt: BigDecimal
-    uniTokenBalance_gte: BigDecimal
-    uniTokenBalance_in: [BigDecimal!]
-    uniTokenBalance_lt: BigDecimal
-    uniTokenBalance_lte: BigDecimal
-    uniTokenBalance_not: BigDecimal
-    uniTokenBalance_not_in: [BigDecimal!]
+    vntwTokenBalance: BigDecimal
+    vntwTokenBalance_gt: BigDecimal
+    vntwTokenBalance_gte: BigDecimal
+    vntwTokenBalance_in: [BigDecimal!]
+    vntwTokenBalance_lt: BigDecimal
+    vntwTokenBalance_lte: BigDecimal
+    vntwTokenBalance_not: BigDecimal
+    vntwTokenBalance_not_in: [BigDecimal!]
     user: String
     userAddress: Bytes
     userAddress_contains: Bytes
