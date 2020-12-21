@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Valueswap V2": {
-        "url": "https://api.thegraph.com/subgraphs/name/valueswap/valueswap-v2",
+        "url": "https://api.thegraph.com/subgraphs/name/valuenetworklive2021/valueswap-v2",
         "headers": {
           "user-agent": "JS GraphQL"
         },
