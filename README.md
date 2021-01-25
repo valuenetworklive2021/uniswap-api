@@ -22,7 +22,7 @@ Please fill out [this form](https://forms.gle/4xucinVsTTPu71bT6) if you would li
 You can use an API key by setting it in the `x-api-key` header, like so:
 
 ```sh
-curl -v --compressed https://valuenetworklive2021.github.io/valueswap-api/v2/tickers -H 'x-api-key: abcd1234'
+curl -v --compressed https://api.valueswap.valuenetwork.live/v2/tickers -H 'x-api-key: abcd1234'
 ```
 
 ## Segregated data
