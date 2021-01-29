@@ -11,7 +11,7 @@ recent data.
 
 V2 Subgraph: https://github.com/valuenetworklive2021/valueswap-v2-subgraph
 
-V1 Subgraph: https://github.com/graphprotocol/valueswap-subgraph
+~~V1 Subgraph: https://github.com/graphprotocol/valueswap-subgraph~~
 
 ## Getting an API Key
 
